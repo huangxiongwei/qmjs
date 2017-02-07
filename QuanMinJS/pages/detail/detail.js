@@ -47,5 +47,21 @@ Page({
         duration: 2000
       })
     }
+  },
+  viewImg:function(event){
+    console.log(event);
+    wx.previewImage({
+      // current: 'String', // 当前显示图片的链接，不填则默认为 urls 的第一张
+      urls: [event.currentTarget.dataset.url],
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })
