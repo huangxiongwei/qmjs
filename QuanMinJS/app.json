@@ -1,10 +1,11 @@
 {
   "pages":[
+    "pages/register/register",
     "pages/index/index",
+    "pages/login/login",
     "pages/detail/detail",
     "pages/upload/upload",
-    "pages/logs/logs",
-    "pages/login/login"
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -19,7 +20,7 @@
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     },{
-      "pagePath": "pages/login/login",
+      "pagePath": "pages/register/register",
       "text": "个人中心",
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
