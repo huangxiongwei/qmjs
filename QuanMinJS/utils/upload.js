@@ -2,8 +2,7 @@ var tempFilePaths = [];
 var backlist = [];
 function selectImg(backfun,fileName,num=1){
     if(fileName){
-        tempFilePaths = [];
-        tempFilePaths.push(fileName);
+        tempFilePaths = fileName;
     }else{
         wx.chooseImage({
         count: num,

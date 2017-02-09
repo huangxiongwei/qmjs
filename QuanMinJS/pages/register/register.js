@@ -8,7 +8,7 @@ Page({
     pickerList:null,
     index:0,
     imgUrl:"",
-    shopImg:null
+    // shopImg:null
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -19,7 +19,7 @@ Page({
     this.setData({userid:openid});
     var that = this;
     wx.request({
-      url: 'http://apis.map.qq.com/ws/place/v1/search?boundary=region('+app.globalData.city+',0)&page_size=20&page_index=1&keyword=健身房&orderby=_distance&key=GQLBZ-35QKJ-JP4FA-FYMFJ-XAEVS-WZB2B',
+      url: 'https://apis.map.qq.com/ws/place/v1/search?boundary=region('+app.globalData.city+',0)&page_size=20&page_index=1&keyword=健身房&orderby=_distance&key=GQLBZ-35QKJ-JP4FA-FYMFJ-XAEVS-WZB2B',
       data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       success: function(res){
@@ -50,7 +50,7 @@ Page({
   },
   applySubmit:function(e){
     if(this.data.index > 0 && this.data.imgUrl != ""){
-        uploadP.selectImg(this.uploadBack,this.data.imgUrl);
+        uploadP.selectImg(this.uploadBack,[this.data.imgUrl]);
     }
     else{
       wx.showToast(
@@ -73,7 +73,10 @@ Page({
       }
     })
   },
-  uploadBack:function(url){
+  uploadBack:function(urlist){
+    uploadP.selectImg(this.uploadListBack,this.data.shopImg);
+  },
+  uploadListBack:function(urlist){
     wx.showToast(
         {
           title: '恭喜你提交成功，请耐心等待审核结果',

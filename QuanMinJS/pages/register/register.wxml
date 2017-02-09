@@ -3,13 +3,15 @@
 <view class="input-list">
 	<view class="input-item input-item-full">
     <text class="input-item-label">上传营业执照</text>
-    <image src="{{imgUrl}}"></image>
+    <image src="{{imgUrl}}" class="input-item-img"></image>
     <button class="btn-block btn-orange" bindtap="applychoose">选择图片</button>
   </view>
   <view class="input-item input-item-full">
     <text class="input-item-label">上传健身房环境照片</text>
-    <view wx:for="{{shopImg}}" class="shopImg">
-      <image src="{{item}}"></image>
+    <view class="shopImgC">
+      <block wx:for="{{shopImg}}" >
+        <image src="{{item}}" class="shopImg"></image>
+      </block>
     </view>
     
     <button class="btn-block btn-orange" bindtap="chooseShopImg">选择图片</button>
