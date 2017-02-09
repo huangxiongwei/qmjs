@@ -4,7 +4,6 @@
     "pages/index/index",
     "pages/login/login",
     "pages/detail/detail",
-    "pages/upload/upload",
     "pages/logs/logs"
   ],
   "window":{

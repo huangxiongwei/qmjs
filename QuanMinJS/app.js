@@ -44,7 +44,8 @@ App({
     shopList:null,
     ip:"https://61652509.aimei1314.com/pp",
     isUser:true,
-    openid:null
+    openid:null,
+    city:"厦门市"
   },
   getUrl(route) {
       return "https://61652509.aimei1314.com/wximage/routes/album/handlers/"+route+".js";

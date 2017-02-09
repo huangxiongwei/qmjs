@@ -1,0 +1,48 @@
+.main{
+  height: 100%;
+  width: 100%;  
+  display: block;
+}
+.serchMain{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-content:space-between;
+}
+.serchHeader{
+  height: 70rpx;
+  border-bottom: 1px solid #000;
+  display: flex;
+  align-content:space-between;
+  padding-bottom: 5px;
+}
+.serchHeader input{
+  padding: 4px;
+  border: 1px solid #000;
+  margin-left: 10px;
+  width: 60%;
+}
+
+.serchList{
+  border-bottom: 1px solid #000;
+  height: auto;
+  flex: 8;
+  margin: 10px;
+  overflow:hidden;
+}
+.serchListItem{
+  width: 100%;
+  height: 80rpx;
+  margin-bottom: 2px;
+  background-color: #e2e2e2;
+}
+.serchButtom{
+  height: 80rpx;
+  border-bottom: 1px solid #000;
+}
+button{
+	font-size: 32rpx;
+	line-height: 72rpx;
+  margin: 0 10px 0 10px;
+}

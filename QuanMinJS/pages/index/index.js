@@ -3,7 +3,6 @@
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     address:"我的地址：",
     lat:"",

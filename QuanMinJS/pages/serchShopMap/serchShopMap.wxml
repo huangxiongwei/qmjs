@@ -1,0 +1,14 @@
+<view class="serchMain">
+  <view class="serchHeader">
+    <input value="输入店名"/>
+    <button>搜索</button>
+  </view>
+  <view class="serchList">
+    <scroll-view scroll-y="true" class="serchListItem" wx:for="{{items}}">
+      <view>{{item.title}}</view>
+    </scroll-view>
+  </view>
+  <view class="serchButtom">
+    <button>确定</button>
+  </view>
+</view>

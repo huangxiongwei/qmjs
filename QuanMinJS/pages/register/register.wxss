@@ -4,7 +4,7 @@
   flex-direction: column;
   box-sizing: border-box;
 }
-nput{
+input{
 	height: 60rpx;
 	line-height: 60rpx;
  	font-family: inherit;
@@ -66,4 +66,9 @@ button{
 	display: flex;
 	padding: 0 20rpx;
 	background: #f9f9f9;
+}
+.input-item img{
+	width: 200px;
+	height: 200px;
+	border: 1rpx solid #e8e8e8;
 }
