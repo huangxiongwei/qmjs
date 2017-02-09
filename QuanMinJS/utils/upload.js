@@ -1,7 +1,6 @@
-var tempFilePath = [];
+var tempFilePaths = [];
 var backlist = [];
 function selectImg(backfun,fileName,num=1){
-    var cosUrl = "https://gz.file.myqcloud.com/files/v2/1252824453/picupload/testfolder";
     if(fileName){
         tempFilePaths = [];
         tempFilePaths.push(fileName);
@@ -25,11 +24,11 @@ function upload(backfun,num=1) {
     var filePath = tempFilePaths.pop();
     // 获取文件名
     var fileName = filePath.match(/(wxfile:\/\/)(.+)/)
-    fileName = fileName[2];
-     
+    fileName = fileName[2]; 
     wx.request({
         url: "https://61652509.aimei1314.com/cosphp/auth.php?bucket=picupload&filepath=testfolder",
         success: function(cosRes) {
+            var cosUrl = "https://gz.file.myqcloud.com/files/v2/1252824453/picupload/testfolder";
             wx.uploadFile({
                 url: cosUrl + '/' + fileName,
                 filePath: filePath,

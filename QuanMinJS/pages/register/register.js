@@ -62,6 +62,13 @@ Page({
     }
   },
   uploadBack:function(url){
+    wx.showToast(
+        {
+          title: '恭喜你提交成功，请耐心等待审核结果',
+          icon: 'success',
+          duration: 2000
+        }
+      )
     console.log("上传成功："+url);
   }
 })
