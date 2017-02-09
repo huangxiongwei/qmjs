@@ -7,7 +7,8 @@ Page({
     items:null,
     pickerList:null,
     index:0,
-    imgUrl:""
+    imgUrl:"",
+    shopImg:null
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -60,6 +61,17 @@ Page({
         }
       )
     }
+  },
+  chooseShopImg:function(url){
+    var that = this;
+    wx.chooseImage({
+      count: 4, 
+      success: function(res){
+        that.setData({
+          shopImg : res.tempFilePaths
+        })
+      }
+    })
   },
   uploadBack:function(url){
     wx.showToast(
