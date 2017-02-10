@@ -1,5 +1,6 @@
 var app = getApp();
 var uploadP = require('../../utils/upload.js');
+var Util = require('../../utils/util.js');
 Page({
   data:{
     userid:null,
@@ -49,7 +50,16 @@ Page({
     })
   },
   applySubmit:function(e){
+    //测试
+    this.uploadListBack();
+    return;
     if(this.data.index > 0 && this.data.imgUrl != ""){
+        wx.showToast(
+        {
+          title: '提交中ing',
+          icon: 'loading',
+          duration: 10000
+        })
         uploadP.selectImg(this.uploadBack,[this.data.imgUrl]);
     }
     else{
@@ -74,16 +84,48 @@ Page({
     })
   },
   uploadBack:function(urlist){
+    this.setData({
+      imgUrl : urlist[0]
+    })
     uploadP.selectImg(this.uploadListBack,this.data.shopImg);
   },
   uploadListBack:function(urlist){
-    wx.showToast(
+    var business = {};
+    var cityGym = {};
+    var mapD = this.data.items[this.data.index];
+    //{business:{uid:"",gymid:"",freetime:1,price:1,password:""},cityGym:{id:"",title:"",lat:11,lng:11,address:""}}
+   
+    business.uid = app.globalData.openid;
+    business.gymid = mapD.id;
+    business.freetime = 10;
+    business.price = 20;
+    business.photo = this.data.imgUrl;
+
+    cityGym.id = mapD.id;
+    cityGym.title = mapD.title;
+    cityGym.lat = mapD.location.lat;
+    cityGym.lng = mapD.location.lng;
+    cityGym.address = mapD.address;
+
+    wx.request({
+      url: 'http://127.0.0.1/test/register.php',
+      //url: 'https://61652509.aimei1314.com/pp/register.php',
+      header: {  
+        "Content-Type": "application/x-www-form-urlencoded"  
+      },  
+      method: "POST",  
+      data: { business : business,cityGym : cityGym },  
+     // data: Util.json2Form( { business : business,ityGym : cityGym }),  
+      success: function(res){
+        wx.hideToast();
+        wx.showToast(
         {
           title: '恭喜你提交成功，请耐心等待审核结果',
           icon: 'success',
           duration: 2000
         }
-      )
-    console.log("上传成功："+url);
+        )
+      }
+    })
   }
 })

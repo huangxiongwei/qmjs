@@ -10,26 +10,13 @@ Page({
     latitude: null,
     longitude: null,
     myName:null,
-    icoUrl:null,
     tDec:null
   },
   onLoad:function(options){
     console.log(options);
     var myId = Number(options.tid);
     var data = app.globalData.shopList[myId];
-    this.setData({latitude: Number(options.latitude),longitude: Number(options.longitude),myName:data.name,icoUrl:data.ico,tDec:data.tdec});
-  },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
+    this.setData({latitude: Number(options.latitude),longitude: Number(options.longitude),myName:data.name,tDec:data.tdec});
   },
   gotoMapE:function(event){
     var that = this;
@@ -53,15 +40,6 @@ Page({
     wx.previewImage({
       // current: 'String', // 当前显示图片的链接，不填则默认为 urls 的第一张
       urls: [event.currentTarget.dataset.url],
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
     })
   }
 })

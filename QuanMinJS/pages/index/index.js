@@ -58,7 +58,7 @@ Page({
         var tid = 0;
         res.data.forEach(function(eitem,index,tarr){
           arr.push({
-            iconPath: eitem.ico,
+            iconPath: "http://ico.ooopic.com/ajax/iconpng/?id=158687.png",
             id: tid,
             latitude: eitem.lat,
             longitude: eitem.lng,

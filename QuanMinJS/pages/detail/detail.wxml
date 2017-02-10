@@ -4,7 +4,6 @@
     <view class="titileText">
       <text>{{myName}}</text>
     </view>
-    <image class="gotoMap" bindtap="gotoMapE" src="{{icoUrl}}"></image>
   </view>
 
  <view>

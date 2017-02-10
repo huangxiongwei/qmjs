@@ -38,7 +38,7 @@ function upload(backfun,num=1) {
                      var result = JSON.parse(uploadRes.data);
                      backlist.push(result.data.source_url);
                      if(tempFilePaths && tempFilePaths.length > 0){
-                         upload();
+                         upload(backfun,num);
                      }
                      else{
                         typeof backfun == "function" && backfun(backlist)
