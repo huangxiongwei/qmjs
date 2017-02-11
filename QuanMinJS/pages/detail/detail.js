@@ -65,6 +65,16 @@ Page({
     })
   },
   buyTime:function(e){
-    
+    wx.requestPayment({
+      'timeStamp': '',//var timestamp=new Date().getTime()；
+      'nonceStr': '',
+      'package': '',
+      'signType': 'MD5',
+      'paySign': '',
+      'success':function(res){
+      },
+      'fail':function(res){
+      }
+    })
   }
 })
