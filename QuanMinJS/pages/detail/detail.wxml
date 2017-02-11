@@ -1,28 +1,35 @@
 <view>
   <view class="titleContainer">
-    <image src="http://img.jsqq.net/uploads/allimg/150228/1_150228191103_3.jpg"></image>
+    <image mode="aspectFill" src="http://img.jsqq.net/uploads/allimg/150228/1_150228191103_3.jpg"></image>
     <view class="titileText">
       <text>{{myName}}</text>
     </view>
+    <view class="gotoMap" bindtap="gotoMapE">
+      <image bin src="http://ico.ooopic.com/ajax/iconpng/?id=158687.png"></image>
+    </view>
+    
   </view>
 
  <view>
   <view class="shopShowTitle">商家展示</view>
   <view class="shopShowContainer">
     <view wx:for="{{prolist}}" class="shopShowImage" bindtap="viewImg" data-url="{{item}}">
-      <image src="{{item}}"></image>
+      <image mode="aspectFill" src="{{item}}"></image>
     </view>
   </view>
 </view>
   
-
 <view>
   <view class="shopShowTitle">商家简介</view>
   <view class="jianjie">
-    <text class="jianjieText">
       {{tDec}}
-    </text>
+  </view>
+  <view class="jianjie">
+      价格：{{price}}元/每次
   </view>
 </view>
 
+<view>
+    <button>购买</button>
+</view>
 </view>

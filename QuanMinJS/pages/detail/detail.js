@@ -3,18 +3,14 @@ var Util = require('../../utils/util.js');
 Page({
   data:{
     myId:0,
-    prolist:[
-      "",
-      "",
-      "",
-      "",
-    ],
+    prolist:[],
     latitude: null,
     longitude: null,
     myName:null,
     tDec:null,
     address:null,
-    shopInfo:null
+    shopInfo:null,
+    price:0
   },
   onLoad:function(options){
     this.data.myId = Number(options.tid);
@@ -38,7 +34,8 @@ Page({
         var tartid = that.data.shopInfo.uid;
         var dir = "http://picupload-1252824453.cosgz.myqcloud.com/testfolder/"+tartid;
         that.setData({
-          prolist:[dir+"shopImg_0.jpg",dir+"shopImg_1.jpg",dir+"shopImg_2.jpg",dir+"shopImg_3.jpg"]
+          prolist:[dir+"shopImg_0.jpg",dir+"shopImg_1.jpg",dir+"shopImg_2.jpg",dir+"shopImg_3.jpg"],
+          price:that.data.shopInfo.price
         });
       }
     })
@@ -66,5 +63,8 @@ Page({
       // current: 'String', // 当前显示图片的链接，不填则默认为 urls 的第一张
       urls: [event.currentTarget.dataset.url],
     })
+  },
+  buyTime:function(e){
+    
   }
 })
