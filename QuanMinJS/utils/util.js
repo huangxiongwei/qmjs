@@ -17,9 +17,11 @@ function formatNumber(n) {
 }
 
 function json2Form(json) {  
-    var str = [];  
+    var str = [];
+    var jsonStr;
     for(var p in json){  
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));  
+        jsonStr = JSON.stringify(json[p]);  
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(jsonStr));  
     }  
     return str.join("&");  
 }

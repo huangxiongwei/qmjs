@@ -1,8 +1,10 @@
 var tempFilePaths = [];
+var fileNamePaths;
 var backlist = [];
-function selectImg(backfun,fileName,num=1){
+function selectImg(backfun,tempFile,fileName,num=1){
+    fileNamePaths= fileName;
     if(fileName){
-        tempFilePaths = fileName;
+        tempFilePaths = tempFile;
     }else{
         wx.chooseImage({
         count: num,
@@ -22,8 +24,13 @@ function selectImg(backfun,fileName,num=1){
 function upload(backfun,num=1) {
     var filePath = tempFilePaths.pop();
     // 获取文件名
-    var fileName = filePath.match(/(wxfile:\/\/)(.+)/)
-    fileName = fileName[2]; 
+    var fileName = filePath.match(/(wxfile:\/\/)(.+)/);
+    if(!fileNamePaths){
+        fileName = fileName[2]; 
+    }
+    else{
+        fileName = fileNamePaths.pop();
+    }
     wx.request({
         url: "https://61652509.aimei1314.com/cosphp/auth.php?bucket=picupload&filepath=testfolder",
         success: function(cosRes) {
@@ -45,7 +52,7 @@ function upload(backfun,num=1) {
                      }
                 },
                 fail:function(uploadRes){
-                    console.log("上传cos失败:" + fileName);
+                    console.log("上传cos失败:" + uploadRes);
                 }
             })
         }

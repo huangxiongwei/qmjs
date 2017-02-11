@@ -9,7 +9,7 @@ Page({
     pickerList:null,
     index:0,
     imgUrl:"",
-    // shopImg:null
+    shopImg:null
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -50,9 +50,6 @@ Page({
     })
   },
   applySubmit:function(e){
-    //测试
-    this.uploadListBack();
-    return;
     if(this.data.index > 0 && this.data.imgUrl != ""){
         wx.showToast(
         {
@@ -60,7 +57,7 @@ Page({
           icon: 'loading',
           duration: 10000
         })
-        uploadP.selectImg(this.uploadBack,[this.data.imgUrl]);
+        uploadP.selectImg(this.uploadBack,[this.data.imgUrl],[app.globalData.openid+"auth.jpg"]);
     }
     else{
       wx.showToast(
@@ -87,7 +84,11 @@ Page({
     this.setData({
       imgUrl : urlist[0]
     })
-    uploadP.selectImg(this.uploadListBack,this.data.shopImg);
+    var shopImgArr  = [];
+    for(var i=0;i<4;i++){
+      shopImgArr.push(app.globalData.openid+"shopImg_"+i.toString()+".jpg");
+    }
+    uploadP.selectImg(this.uploadListBack,this.data.shopImg,shopImgArr);
   },
   uploadListBack:function(urlist){
     var business = {};
@@ -108,14 +109,13 @@ Page({
     cityGym.address = mapD.address;
 
     wx.request({
-      url: 'http://127.0.0.1/test/register.php',
-      //url: 'https://61652509.aimei1314.com/pp/register.php',
+      //url: 'http://127.0.0.1/test/register.php',
+      url: 'https://61652509.aimei1314.com/pp/register.php',
       header: {  
         "Content-Type": "application/x-www-form-urlencoded"  
       },  
-      method: "POST",  
-      data: { business : business,cityGym : cityGym },  
-     // data: Util.json2Form( { business : business,ityGym : cityGym }),  
+      method: "POST",    
+      data: Util.json2Form({ business : business,cityGym : cityGym }),  
       success: function(res){
         wx.hideToast();
         wx.showToast(
