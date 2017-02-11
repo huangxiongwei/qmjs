@@ -40,7 +40,7 @@ function upload(backfun,num=1) {
                 filePath: filePath,
                 header: { 'Authorization': cosRes.data },
                 name: 'filecontent',
-                formData: { op: 'upload' },
+                formData: { op: 'upload', insertOnly:1},
                 success: function(uploadRes){ 
                      var result = JSON.parse(uploadRes.data);
                      backlist.push(result.data.source_url);

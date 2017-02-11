@@ -1,22 +1,47 @@
 var app = getApp();
+var Util = require('../../utils/util.js');
 Page({
   data:{
+    myId:0,
     prolist:[
-      "http://img.jsqq.net/uploads/allimg/150228/1_150228191103_3.jpg",
-      "http://img.jsqq.net/uploads/allimg/150228/1_150228191103_3.jpg",
-      "http://img.jsqq.net/uploads/allimg/150228/1_150228191103_3.jpg",
-      "http://img.jsqq.net/uploads/allimg/150228/1_150228191103_3.jpg",
+      "",
+      "",
+      "",
+      "",
     ],
     latitude: null,
     longitude: null,
     myName:null,
-    tDec:null
+    tDec:null,
+    address:null,
+    shopInfo:null
   },
   onLoad:function(options){
-    console.log(options);
-    var myId = Number(options.tid);
-    var data = app.globalData.shopList[myId];
-    this.setData({latitude: Number(options.latitude),longitude: Number(options.longitude),myName:data.name,tDec:data.tdec});
+    this.data.myId = Number(options.tid);
+    var data = app.globalData.shopList[this.data.myId];
+    this.setData({latitude: Number(options.latitude),longitude: Number(options.longitude),myName:data.name,tDec:data.address});
+  },
+  onReady:function(){
+    this.getShopInfo();
+  },
+  getShopInfo(){
+    var that = this;
+    wx.request({
+      url: 'https://61652509.aimei1314.com/pp/getShopInfo.php',
+      header: {  
+        "Content-Type": "application/x-www-form-urlencoded"  
+      },  
+      method: "POST",    
+      data: Util.json2Form({gymId:app.globalData.shopList[this.data.myId].id,uid:app.globalData.openid}),  
+      success: function(res){
+        that.data.shopInfo = res.data;
+        var tartid = that.data.shopInfo.uid;
+        var dir = "http://picupload-1252824453.cosgz.myqcloud.com/testfolder/"+tartid;
+        that.setData({
+          prolist:[dir+"shopImg_0.jpg",dir+"shopImg_1.jpg",dir+"shopImg_2.jpg",dir+"shopImg_3.jpg"]
+        });
+      }
+    })
   },
   gotoMapE:function(event){
     var that = this;

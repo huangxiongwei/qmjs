@@ -20,7 +20,7 @@
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     },{
-      "pagePath": "pages/register/register",
+      "pagePath": "pages/login/login",
       "text": "个人中心",
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
