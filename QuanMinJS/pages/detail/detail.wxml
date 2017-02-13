@@ -30,6 +30,6 @@
 </view>
 
 <view>
-    <button>购买</button>
+    <button bindtap="buyTime">购买</button>
 </view>
 </view>

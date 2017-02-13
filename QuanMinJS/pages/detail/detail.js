@@ -65,16 +65,36 @@ Page({
     })
   },
   buyTime:function(e){
-    wx.requestPayment({
-      'timeStamp': '',//var timestamp=new Date().getTime()；
-      'nonceStr': '',
-      'package': '',
-      'signType': 'MD5',
-      'paySign': '',
-      'success':function(res){
+    wx.request({
+      url: 'https://61652509.aimei1314.com/WxpayAPI_php_v3/example/getWxSign.php',
+      header: {  
+        "Content-Type": "application/x-www-form-urlencoded"  
+      },  
+      method: "POST",    
+      data: Util.json2Form({tid:app.globalData.openid}),
+      success: function(res){
+        var obj = res.data
+        wx.requestPayment({
+          'timeStamp': obj.timeStamp,
+          'nonceStr': obj.nonceStr,
+          'package': obj.package,
+          'signType': 'MD5',
+          'paySign': obj.paySign,
+          'success':function(res){
+            console.log(res);
+          },
+          'fail':function(res){
+            console.log(res);
+          }
+        })
       },
-      'fail':function(res){
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
       }
     })
+    
   }
 })
