@@ -10,7 +10,8 @@ Page({
     tDec:null,
     address:null,
     shopInfo:null,
-    price:0
+    price:0,
+    buyed:false
   },
   onLoad:function(options){
     this.data.myId = Number(options.tid);
@@ -81,6 +82,7 @@ Page({
           'signType': 'MD5',
           'paySign': obj.paySign,
           'success':function(res){
+
             console.log(res);
           },
           'fail':function(res){

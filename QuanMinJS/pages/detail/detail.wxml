@@ -30,6 +30,7 @@
 </view>
 
 <view>
-    <button bindtap="buyTime">购买</button>
+    <button wx:if="{{!buyed}}" bindtap="buyTime">购买</button>
+    <text wx:else>已购买</text>
 </view>
 </view>
