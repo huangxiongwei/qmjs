@@ -39,13 +39,46 @@ App({
       })
     }
   },
+  getOrderList:function(){
+    var that = this;
+     wx.request({
+        url: 'https://61652509.aimei1314.com/pp/getOrders.php',
+        header: {  
+          "Content-Type": "application/x-www-form-urlencoded"  
+        },  
+        method: "POST",    
+        data: Util.json2Form({buyid:that.globalData.openid}),
+        success: function(res){
+          this.data.orderList = res.data;
+        }
+      })
+  },
+  addOrder:function(shopid){
+    var that = this;
+    if(!that.globalData.orderList){
+        that.globalData.orderList = [];
+        that.globalData.orderList.push({shopid:shopid,buyid:that.globalData.openid});
+    }
+  },
+  getBuyOrder:function(shopid){
+    var that = this;
+    if(that.globalData.orderList){
+      that.globalData.orderList.forEach(function(eitem,index){
+        if(shopid == eitem.shopid){
+            return true;
+        }
+      });
+    }
+    return false;
+  },
   globalData:{
     userInfo:null,
     shopList:null,
     ip:"https://61652509.aimei1314.com/pp",
     isUser:true,
     openid:null,
-    city:"厦门市"
+    city:"厦门市",
+    orderList:null
   },
   getUrl(route) {
       return "https://61652509.aimei1314.com/wximage/routes/album/handlers/"+route+".js";

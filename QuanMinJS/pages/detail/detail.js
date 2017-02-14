@@ -66,6 +66,7 @@ Page({
     })
   },
   buyTime:function(e){
+    var that = this;
     wx.request({
       url: 'https://61652509.aimei1314.com/WxpayAPI_php_v3/example/getWxSign.php',
       header: {  
@@ -82,8 +83,17 @@ Page({
           'signType': 'MD5',
           'paySign': obj.paySign,
           'success':function(res){
-
-            console.log(res);
+              wx.request({
+                url: 'https://61652509.aimei1314.com/pp/addOrder.php',
+                header: {  
+                  "Content-Type": "application/x-www-form-urlencoded"  
+                },  
+                method: "POST",    
+                data: Util.json2Form({buyid:app.globalData.openid,shopid:that.data.shopInfo.uid}),
+                success: function(res){
+                  that.setData({buyed:true});
+                }
+              })
           },
           'fail':function(res){
             console.log(res);
