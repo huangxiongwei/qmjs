@@ -17,6 +17,7 @@ Page({
     this.data.myId = Number(options.tid);
     var data = app.globalData.shopList[this.data.myId];
     this.setData({latitude: Number(options.latitude),longitude: Number(options.longitude),myName:data.name,tDec:data.address});
+    this.setData({buyed:app.getBuyOrder(data.id)});
   },
   onReady:function(){
     this.getShopInfo();
@@ -92,6 +93,7 @@ Page({
                 data: Util.json2Form({buyid:app.globalData.openid,shopid:that.data.shopInfo.uid}),
                 success: function(res){
                   that.setData({buyed:true});
+                  app.addOrder(that.data.shopInfo.uid);
                 }
               })
           },
