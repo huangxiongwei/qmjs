@@ -17,7 +17,6 @@ Page({
     this.data.myId = Number(options.tid);
     var data = app.globalData.shopList[this.data.myId];
     this.setData({latitude: Number(options.latitude),longitude: Number(options.longitude),myName:data.name,tDec:data.address});
-    this.setData({buyed:app.getBuyOrder(data.id)});
   },
   onReady:function(){
     this.getShopInfo();
@@ -33,6 +32,7 @@ Page({
       data: Util.json2Form({gymId:app.globalData.shopList[this.data.myId].id,uid:app.globalData.openid}),  
       success: function(res){
         that.data.shopInfo = res.data;
+        that.setData({buyed:app.getBuyOrder(that.data.shopInfo.uid)});
         var tartid = that.data.shopInfo.uid;
         var dir = "http://picupload-1252824453.cosgz.myqcloud.com/testfolder/"+tartid;
         that.setData({

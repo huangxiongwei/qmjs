@@ -1,5 +1,6 @@
 //app.js
 const config = require('/config.js');
+var Util = require('/utils/util.js');
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -26,7 +27,8 @@ App({
                 wx.getUserInfo({
                 success: function (res) {
                   that.globalData.userInfo = res.userInfo;
-                  typeof cb == "function" && cb(that.globalData.userInfo)
+                  typeof cb == "function" && cb(that.globalData.userInfo);
+                  that.getOrderList();
                 }
               })
             }
@@ -49,7 +51,10 @@ App({
         method: "POST",    
         data: Util.json2Form({buyid:that.globalData.openid}),
         success: function(res){
-          this.data.orderList = res.data;
+          that.globalData.orderList = res.data;
+        },
+        fail:function(res){
+          console.log(res.data);
         }
       })
   },
@@ -62,14 +67,16 @@ App({
   },
   getBuyOrder:function(shopid){
     var that = this;
+    var bob = false;
     if(that.globalData.orderList){
       that.globalData.orderList.forEach(function(eitem,index){
         if(shopid == eitem.shopid){
-            return true;
+            bob = true;
+            return;
         }
       });
     }
-    return false;
+    return bob;
   },
   globalData:{
     userInfo:null,
