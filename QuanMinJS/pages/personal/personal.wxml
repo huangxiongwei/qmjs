@@ -1,5 +1,27 @@
-<view class="container">
-  <view class="textContainer">
-    <text class="textStyle">{{text}}</text>
+<view>
+  <view class="titleContainer">
+    <image mode="aspectFill" src="http://img.jsqq.net/uploads/allimg/150228/1_150228191103_3.jpg"></image>
+    <view class="titileText">
+      <text>{{myName}}</text>
+    </view>    
   </view>
+
+ <view>
+  <view class="shopShowTitle">商家展示</view>
+  <view class="shopShowContainer">
+    <view wx:for="{{prolist}}" class="shopShowImage" bindtap="viewImg" data-url="{{item}}" data-id="{{index}}">
+      <image mode="aspectFill" src="{{item}}"></image>
+    </view>
+  </view>
+</view>
+  
+<view>
+  <view class="shopShowTitle">商家简介</view>
+  <view class="jianjie">
+      {{tDec}}
+  </view>
+  <view class="jianjie">
+      价格：{{price}}元/每次
+  </view>
+</view>
 </view>

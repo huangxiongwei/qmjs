@@ -29,7 +29,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"  
       },  
       method: "POST",    
-      data: Util.json2Form({gymId:app.globalData.shopList[this.data.myId].id,uid:app.globalData.openid}),  
+      data: Util.json2Form({uid:app.globalData.openid}),  
       success: function(res){
         that.data.shopInfo = res.data;
         that.setData({buyed:app.getBuyOrder(that.data.shopInfo.uid)});

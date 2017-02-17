@@ -1,10 +1,10 @@
 {
   "pages":[
-    
     "pages/index/index",
     "pages/register/register",
     "pages/login/login",
     "pages/detail/detail",
+    "pages/personal/personal",
     "pages/logs/logs"
   ],
   "window":{
@@ -25,7 +25,7 @@
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     },{
-      "pagePath": "pages/upload/upload",
+      "pagePath": "pages/personal/personal",
       "text": "上传图片",
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
