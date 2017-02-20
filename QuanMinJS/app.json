@@ -20,12 +20,12 @@
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     },{
-      "pagePath": "pages/login/login",
+      "pagePath": "pages/personal/personal",
       "text": "个人中心",
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     },{
-      "pagePath": "pages/personal/personal",
+      "pagePath": "pages/register/register",
       "text": "上传图片",
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"

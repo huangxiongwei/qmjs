@@ -4,7 +4,7 @@ var uploadP = require('../../utils/upload.js');
 var app = getApp();
 Page({
   data: {
-    prolist: [],
+    prolist: ["/image/add.jpeg","/image/add.jpeg","/image/add.jpeg","/image/add.jpeg"],
     myName: null,
     tDec: null,
     address: null,
@@ -12,13 +12,14 @@ Page({
     shopinfo:null
   },
   onLoad: function (options) {
-    dir = dir + app.globalData.openid;
-    this.setData({
-      prolist: [dir + "shopImg_0.jpg", dir + "shopImg_1.jpg", dir + "shopImg_2.jpg", dir + "shopImg_3.jpg"],
-    });
+    
   },
   onReady: function () {
     // 页面渲染完成
+    dir = dir + app.globalData.openid;
+    this.setData({
+      prolist: [dir + "shopImg_01.jpg", dir + "shopImg_1.jpg", dir + "shopImg_2.jpg", dir + "shopImg_3.jpg"],
+    });
     this.getShopInfo();
   },
   getShopInfo() {
@@ -62,24 +63,29 @@ Page({
     wx.showActionSheet({
       itemList: ['重新上传', '删除'],
       success: function (res) {
+        var choosid = e.currentTarget.dataset.id;
         switch(res.tapIndex){
           case 0:
              wx.chooseImage({
               count: 1, 
               success: function(res){
-                uploadP.selectImg(that.uploadBack,res.tempFilePaths,[app.globalData.openid+"shopImg_"+e.currentTarget.dataset.id.toString()+".jpg"]);
+                uploadP.selectImg(that.uploadBack,res.tempFilePaths,[app.globalData.openid+"shopImg_"+choosid.toString()+".jpg"]);
               }
             })
             break;
           case 1:
             wx.request({
-              url: 'https://URL',
-              data: {},
+              url: 'https://61652509.aimei1314.com/cosphp/detelePic.php',
+              data: {picUrl:"testfolder/"+app.globalData.openid+"shopImg_"+choosid.toString()+".jpg"},
               method: 'GET',
               success: function(res){
-                // success
+                var tarArr = that.data.prolist;
+                tarArr[choosid] = "/image/add.jpeg";
+                that.setData({
+                    prolist : tarArr
+                });
               }
-            })
+            });
             break;
         }
       },
@@ -87,6 +93,9 @@ Page({
         console.log(res.errMsg)
       }
     })
+  },
+  binderror:function(e){
+    e.currentTarget
   },
   uploadListBack:function(){
      wx.showToast(
