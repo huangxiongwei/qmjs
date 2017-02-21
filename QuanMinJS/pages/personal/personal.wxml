@@ -10,7 +10,7 @@
   <view class="shopShowTitle">商家展示</view>
   <view class="shopShowContainer">
     <view wx:for="{{prolist}}" class="shopShowImage" bindtap="viewImg" data-url="{{item}}" data-id="{{index}}">
-      <image mode="aspectFill" src="{{item}}" binderror="binderror"></image>
+      <image mode="aspectFill" src="{{item}}" binderror="binderror" id="{{index}}"></image>
     </view>
   </view>
 </view>

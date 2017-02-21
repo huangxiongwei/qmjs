@@ -1,10 +1,12 @@
 var dir = "http://picupload-1252824453.cosgz.myqcloud.com/testfolder/";
 var Util = require('../../utils/util.js');
 var uploadP = require('../../utils/upload.js');
+var noneImg = "/image/add.jpeg";
 var app = getApp();
+var choosid = 0;
 Page({
   data: {
-    prolist: ["/image/add.jpeg","/image/add.jpeg","/image/add.jpeg","/image/add.jpeg"],
+    prolist: [],
     myName: null,
     tDec: null,
     address: null,
@@ -18,7 +20,7 @@ Page({
     // 页面渲染完成
     dir = dir + app.globalData.openid;
     this.setData({
-      prolist: [dir + "shopImg_01.jpg", dir + "shopImg_1.jpg", dir + "shopImg_2.jpg", dir + "shopImg_3.jpg"],
+      prolist: [dir + "shopImg_0.jpg", dir + "shopImg_1.jpg", dir + "shopImg_2.jpg", dir + "shopImg_3.jpg"],
     });
     this.getShopInfo();
   },
@@ -60,16 +62,17 @@ Page({
   },
   viewImg: function (e) {
     var that = this;
+    var url = e.currentTarget.dataset.url;
+    choosid = e.currentTarget.dataset.id;
     wx.showActionSheet({
-      itemList: ['重新上传', '删除'],
+      itemList: url==noneImg?["上传"]:['重新上传', '删除'],
       success: function (res) {
-        var choosid = e.currentTarget.dataset.id;
         switch(res.tapIndex){
           case 0:
              wx.chooseImage({
               count: 1, 
               success: function(res){
-                uploadP.selectImg(that.uploadBack,res.tempFilePaths,[app.globalData.openid+"shopImg_"+choosid.toString()+".jpg"]);
+                uploadP.selectImg(that.uploadListBack,res.tempFilePaths,[app.globalData.openid+"shopImg_"+choosid.toString()+".jpg"]);
               }
             })
             break;
@@ -79,31 +82,35 @@ Page({
               data: {picUrl:"testfolder/"+app.globalData.openid+"shopImg_"+choosid.toString()+".jpg"},
               method: 'GET',
               success: function(res){
-                var tarArr = that.data.prolist;
-                tarArr[choosid] = "/image/add.jpeg";
-                that.setData({
-                    prolist : tarArr
-                });
+                that.updateImg(choosid);
               }
             });
             break;
         }
       },
       fail: function (res) {
-        console.log(res.errMsg)
+        //console.log(res.errMsg)
       }
     })
   },
   binderror:function(e){
-    e.currentTarget
+    this.updateImg(e.target.id);
   },
-  uploadListBack:function(){
+  updateImg:function(inddex,url){
+    var tarArr = this.data.prolist;
+    tarArr[inddex] = url?url:noneImg;
+    this.setData({
+        prolist : tarArr
+    });
+  },
+  uploadListBack:function(arr){
      wx.showToast(
         {
           title: '上传成功',
           icon:"success",
           duration: 1000
-        })
+        });
+      this.updateImg(choosid,arr[0]);
   },
   onShow: function () {
     // 页面显示
