@@ -24,4 +24,7 @@
       价格：{{price}}元/每次
   </view>
 </view>
+	<view class="btn-submit">
+		<button class="btn-block btn-orange" bindtap="applySubmit">修改</button>
+	</view>
 </view>
