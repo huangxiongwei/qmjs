@@ -1,11 +1,13 @@
 {
   "pages":[
+     "pages/record/record",
     "pages/index/index",
     "pages/register/register",
     "pages/login/login",
     "pages/detail/detail",
     "pages/personal/personal",
     "pages/personal/eidtpage/eidtpage",
+
     "pages/logs/logs"
   ],
   "window":{
@@ -26,8 +28,8 @@
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     },{
-      "pagePath": "pages/register/register",
-      "text": "上传图片",
+      "pagePath": "pages/record/record",
+      "text": "录音",
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     }]

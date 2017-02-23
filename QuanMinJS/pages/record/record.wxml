@@ -1,0 +1,2 @@
+<view class="contentText">{{content}}</view>
+<button bindtouchstart="startRecord" bindtouchend="stopRecord">开始录音</button>

@@ -1,0 +1,5 @@
+/* pages/record/record.wxss */
+.contentText{
+    width: 100%;
+    height: 300px;
+}
