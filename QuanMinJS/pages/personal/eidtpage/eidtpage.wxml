@@ -1,0 +1,9 @@
+<view class="container">
+    <text class="textStyle">每日次数</text>
+    <input type="number" placeholder="10" maxlength="3" auto-focus/>
+    <text class="textStyle">商家描述</text>
+    <input placeholder="这是一个可以自动聚焦的input"/>
+    <text class="textStyle">什么鬼</text>
+    <input type="emoji" placeholder="这是一个带有表情的输入框" />
+    <button class="btn-block btn-orange" bindtap="applySubmit">修改</button>
+</view>

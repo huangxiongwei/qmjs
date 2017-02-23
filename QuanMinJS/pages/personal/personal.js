@@ -112,6 +112,11 @@ Page({
         });
       this.updateImg(choosid,arr[0]);
   },
+  applySubmit:function(e){
+    wx.navigateTo({
+      url: 'eidtpage/eidtpage?id=1'
+    })
+  },
   onShow: function () {
     // 页面显示
   },

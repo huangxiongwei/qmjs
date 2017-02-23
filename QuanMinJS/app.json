@@ -5,6 +5,7 @@
     "pages/login/login",
     "pages/detail/detail",
     "pages/personal/personal",
+    "pages/personal/eidtpage/eidtpage",
     "pages/logs/logs"
   ],
   "window":{
