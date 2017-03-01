@@ -12,26 +12,32 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#584f60",
+    "navigationBarTitleText": "全民健身",
+    "navigationBarTextStyle":"#fff"
   },
   "tabBar": {
+    "color":"#e2e2e2",
+    "selectedColor":"#584f60",
+    "backgroundColor":"#fff",
+    "HexColor":"#584f60",
+    "borderStyle":"#584f60",
+    "tabbar":"#fff",
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "首页",
+      "text": "健身",
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     },{
       "pagePath": "pages/personal/personal",
-      "text": "个人中心",
-      "iconPath": "image/wechat.png",
-      "selectedIconPath": "image/wechatHL.png"
+      "text": "我的",
+      "iconPath": "image/wechat1.png",
+      "selectedIconPath": "image/wechatHL1.png"
     },{
       "pagePath": "pages/record/record",
-      "text": "录音",
-      "iconPath": "image/wechat.png",
-      "selectedIconPath": "image/wechatHL.png"
+      "text": "社区",
+      "iconPath": "image/wechat2.png",
+      "selectedIconPath": "image/wechatHL2.png"
     }]
   }
 }

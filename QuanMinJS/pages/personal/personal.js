@@ -1,7 +1,7 @@
 var dir = "http://picupload-1252824453.cosgz.myqcloud.com/testfolder/";
 var Util = require('../../utils/util.js');
 var uploadP = require('../../utils/upload.js');
-var noneImg = "/image/add.jpeg";
+var noneImg = "/image/add.png";
 var app = getApp();
 var choosid = 0;
 Page({
