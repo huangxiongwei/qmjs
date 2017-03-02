@@ -1,7 +1,7 @@
 /**index.wxss**/
 .userinfo-container{
   width: 100%;
-  height: 200rpx;
+  height: 100rpx;
   position:absolute;
 }
 .userinfo {
@@ -12,8 +12,8 @@
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 80rpx;
+  height: 80rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
@@ -25,5 +25,5 @@
 .usermotto {
   position:absolute;
   right: 20rpx;
-  top:70rpx;
+  top:35rpx;
 }
