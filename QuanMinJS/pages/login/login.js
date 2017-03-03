@@ -1,10 +1,50 @@
 var app = getApp();
+var sliderWidth = 120;
 Page({
   data:{
-    text:"Page login"
+    userInfo:{},
+    tabs: ["已购买的卡", "使用过的卡"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0,
+    icon20:"/image/play.png",
+    prolist:null
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+    if(app.globalData.isUser){
+      wx.redirectTo({
+        url: '../personal/personal'
+      })
+    }
+    var that = this
+    that.setData({prolist:app.globalData.orderList});
+    //调用应用实例的方法获取全局数据
+    app.getUserInfo(function(userInfo){
+      //更新数据
+      that.setData({
+        userInfo:userInfo
+      })
+    })  
+    wx.getSystemInfo({
+        success: function(res) {
+            that.setData({
+                sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+                sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+            });
+        }
+    });
+  },
+   onShareAppMessage: function () {
+    return {
+      title: '自定义分享标题',
+      path: '/page/login?id=123'
+    }
+  },
+  tabClick: function (e) {
+      this.setData({
+          sliderOffset: e.currentTarget.offsetLeft,
+          activeIndex: e.currentTarget.id
+      });
   },
   onReady:function(){
     // 页面渲染完成

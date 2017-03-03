@@ -1,4 +1,5 @@
 var app = getApp();
+var sdata = null;
 var Util = require('../../utils/util.js');
 Page({
   data:{
@@ -15,8 +16,8 @@ Page({
   },
   onLoad:function(options){
     this.data.myId = Number(options.tid);
-    var data = app.globalData.shopList[this.data.myId];
-    this.setData({latitude: Number(options.latitude),longitude: Number(options.longitude),myName:data.name,tDec:data.address});
+    sdata = app.globalData.shopList[this.data.myId];
+    this.setData({latitude: Number(options.latitude),longitude: Number(options.longitude),myName:sdata.name,tDec:sdata.address});
   },
   onReady:function(){
     this.getShopInfo();
@@ -29,7 +30,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"  
       },  
       method: "POST",    
-      data: Util.json2Form({uid:app.globalData.openid}),  
+      data: Util.json2Form({gymId:sdata.id}),  
       success: function(res){
         that.data.shopInfo = res.data;
         that.setData({buyed:app.getBuyOrder(that.data.shopInfo.uid)});

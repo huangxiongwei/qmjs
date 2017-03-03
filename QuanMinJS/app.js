@@ -57,6 +57,24 @@ App({
           console.log(res.data);
         }
       })
+      that.getShopInfo();
+  },
+  getShopInfo(){
+    var that =  this;
+    wx.request({
+      url: 'https://61652509.aimei1314.com/pp/getShopInfo.php',
+      header: {  
+        "Content-Type": "application/x-www-form-urlencoded"  
+      },  
+      method: "POST",    
+      data: Util.json2Form({uid:that.globalData.openid}),  
+      success: function(res){
+        that.globalData.shopInfo = res.data;
+        if(that.globalData.shopInfo){
+          that.globalData.isUser = false;
+        }
+      }
+    })
   },
   addOrder:function(shopid){
     var that = this;
@@ -85,7 +103,8 @@ App({
     isUser:true,
     openid:null,
     city:"厦门市",
-    orderList:null
+    orderList:null,
+    shopInfo:null
   },
   getUrl(route) {
       return "https://61652509.aimei1314.com/wximage/routes/album/handlers/"+route+".js";

@@ -51,8 +51,7 @@ Page({
        wx.request({
       url: 'https://61652509.aimei1314.com/pp/getShopList.php',
       data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      method: 'GET', 
       success: function(res){
         var arr = [];  
         var tid = 0;
@@ -63,7 +62,8 @@ Page({
             latitude: eitem.lat,
             longitude: eitem.lng,
             width: 50,
-            height: 50
+            height: 50,
+            gymId:eitem.id
           });
           tid ++;
         })
@@ -81,6 +81,6 @@ Page({
     var latitude = that.data.markers[id].latitude;
     var longitude = that.data.markers[id].longitude;
     var urls='../detail/detail?tid='+id+'&latitude='+latitude+'&longitude='+longitude;
-    wx.navigateTo(wx.navigateTo({url:urls}));
+    wx.navigateTo({url:urls});
   }
 })

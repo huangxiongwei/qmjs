@@ -30,15 +30,15 @@
       "iconPath": "image/wechat.png",
       "selectedIconPath": "image/wechatHL.png"
     },{
-      "pagePath": "pages/personal/personal",
-      "text": "我的",
-      "iconPath": "image/wechat1.png",
-      "selectedIconPath": "image/wechatHL1.png"
-    },{
       "pagePath": "pages/record/record",
       "text": "社区",
       "iconPath": "image/wechat2.png",
       "selectedIconPath": "image/wechatHL2.png"
+    },{
+      "pagePath": "pages/login/login",
+      "text": "我的",
+      "iconPath": "image/wechat1.png",
+      "selectedIconPath": "image/wechatHL1.png"
     }]
   }
 }
